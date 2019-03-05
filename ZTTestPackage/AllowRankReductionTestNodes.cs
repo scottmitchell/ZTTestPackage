@@ -11,55 +11,32 @@ using Autodesk.DesignScript.Runtime;
 namespace ZTTestPackage
 {
     
-    public class Class1
+    public class AllowRankReductionTestNodes
     {
-        private string test = "test";
+        private string someObject = "test";
 
         [AllowRankReduction]
-        public List<object> TestReduced => new List<object> { test };
+        public List<object> SomeProperty => new List<object> { someObject };
 
         [AllowRankReduction]
-        public List<string> Test {
+        public List<object> SomeProperty2
+        {
             [AllowRankReduction]
             get
             {
-                return new List<string> { test };
+                return new List<object> { someObject };
             }
         }
         
         public List<string> GetTest()
         {
-            return new List<string> { test };
+            return new List<string> { someObject };
         }
 
         [AllowRankReduction]
         public List<string> GetTestReduced()
         {
-            return new List<string> { test };
+            return new List<string> { someObject };
         }
-
-
-        /*[AllowRankReduction]
-        public static List<int> RankReduceTest()
-        {
-            return new List<int> { 0 };
-        }
-
-        [AllowRankReduction]
-        public List<int> NonStaticRankReduceTest()
-        {
-            return new List<int> { 0 };
-        }
-
-        public static List<int> NoRankReduceTest()
-        {
-            return new List<int> { 0 };
-        }
-
-        [AllowRankReduction]
-        public IEnumerable<int> RankReductionArrowFunction => new List<int> { 0 };
-
-        [AllowRankReduction]
-        public IEnumerable<int> RankReductionArrowFunctionStatic => new List<int> { 0 };*/
     }
 }
